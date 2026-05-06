@@ -2,7 +2,7 @@
 # Fichier de Vann Sovannthanant et de Luke Immanuel Legaspina.
 # -------------------- Importation --------------------
 from Partie import (lire_stats_json, Hero, Ennemi)
-from Partie import Personnage, Hero, Ennemi, Combat, Action, CombatControl, UI_COMBAT
+from Partie import Personnage, Hero, Ennemi, Combat, Action
 from dataclasses import field
 from datetime import datetime
 from typing import Callable
@@ -12,8 +12,6 @@ import asyncio
 import json
 import sys
 import random
-
-from Partie.CombatControl import CombatController
 
 
 # -------------------- Interface DemoFlet --------------------
@@ -365,49 +363,112 @@ def main(page: ft.Page):
             dict_abilite = lire_stats_json("Partie/Fichiers/Abilite_Hero.json")
 
             # 1 hero minimum, 4 heros maximum.
+            if 0 < len(dict_heros) <= 4: combat = Combat([],[],"FORET")
+            else: raise ValueError("Vous devez avoir au moins 1 héro pour jouer !")
 
-            controller = CombatController({
-                "heros": dict_heros,
-                "ennemi": dict_ennemi,
-                "abilite": dict_abilite,
-                "scene": dict_scene,
-                "type_hero": dict_type_hero
-            })
+            def inserer_hero_dans_interface():
+                combat.placement_hero = combat.inserer_heros(dict_heros, dict_heros)
 
-            controller.init_combat()
+            def inserer_ennemis_dans_interface():
+                combat.generer_ennemis(dict_scene, dict_ennemi)
 
-            tour_actuel = 1
+            def actions_boutons():
+                pass
 
-            def refresh():
-                page.views[-1] = build_view()
-                page.update()
+            def deroulement_jeu():
 
-            def on_attack_click(e):
-                perso = controller.current()
-                type_perso = perso.stats_ajouter
+                pass
 
-                actions = controller.dict_abilite[type_perso]["ACTION_ATTAQUE"]
-                controller.available_actions = list(actions.keys())
+            # Spaghetti code pour empêcher qu'une erreur se passe s'il y'a moins de quatre héros.
+            inserer_hero_dans_interface()
+            nombre_hero = 0
+            for hero in combat.placement_hero:
+                nombre_hero += 1
+            if nombre_hero == 1:
+                nom_hero0 = (combat.placement_hero[0]).nom
+                type_hero0 = list(dict_heros[nom_hero0].keys())[0]
+                vie_hero0 = (f"{(combat.placement_hero[0]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[0]).stats["point_vie_max"]}")
+                nom_hero1 = None
+                type_hero1 = None
+                vie_hero1 = None
 
-                refresh()
+                nom_hero2 = None
+                type_hero2 = None
+                vie_hero2 = None
 
-            def on_action_select(action_name):
-                controller.action = action_name
-                refresh()
+                nom_hero3 = None
+                type_hero3 = None
+                vie_hero3 = None
+            elif nombre_hero == 2:
+                nom_hero0 = (combat.placement_hero[0]).nom
+                type_hero0 = list(dict_heros[nom_hero0].keys())[0]
+                vie_hero0 = (f"{(combat.placement_hero[0]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[0]).stats["point_vie_max"]}")
+                nom_hero1 = (combat.placement_hero[1]).nom
+                type_hero1 = list(dict_heros[nom_hero1].keys())[0]
+                vie_hero1 = (f"{(combat.placement_hero[1]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[1]).stats["point_vie_max"]}")
+                nom_hero2 = None
+                type_hero2 = None
+                vie_hero2 = None
 
-            def on_enemy_click(index):
-                if controller.action is None:
-                    return
+                nom_hero3 = None
+                type_hero3 = None
+                vie_hero3 = None
+            elif nombre_hero == 3:
+                nom_hero0 = (combat.placement_hero[0]).nom
+                type_hero0 = list(dict_heros[nom_hero0].keys())[0]
+                vie_hero0 = (f"{(combat.placement_hero[0]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[0]).stats["point_vie_max"]}")
+                nom_hero1 = (combat.placement_hero[1]).nom
+                type_hero1 = list(dict_heros[nom_hero1].keys())[0]
+                vie_hero1 = (f"{(combat.placement_hero[1]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[1]).stats["point_vie_max"]}")
+                nom_hero2 = (combat.placement_hero[2]).nom
+                type_hero2 = list(dict_heros[nom_hero2].keys())[0]
+                vie_hero2 = (f"{(combat.placement_hero[2]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[2]).stats["point_vie_max"]}")
+                nom_hero3 = None
+                type_hero3 = None
+                vie_hero3 = None
+            elif nombre_hero == 4:
+                nom_hero0 = (combat.placement_hero[0]).nom
+                type_hero0 = list(dict_heros[nom_hero0].keys())[0]
+                vie_hero0 = (f"{(combat.placement_hero[0]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[0]).stats["point_vie_max"]}")
+                nom_hero1 = (combat.placement_hero[1]).nom
+                type_hero1 = list(dict_heros[nom_hero1].keys())[0]
+                vie_hero1 = (f"{(combat.placement_hero[1]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[1]).stats["point_vie_max"]}")
+                nom_hero2 = (combat.placement_hero[2]).nom
+                type_hero2 = list(dict_heros[nom_hero2].keys())[0]
+                vie_hero2 = (f"{(combat.placement_hero[2]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[2]).stats["point_vie_max"]}")
+                nom_hero3 = (combat.placement_hero[3]).nom
+                type_hero3 = list(dict_heros[nom_hero3].keys())[0]
+                vie_hero3 = (f"{(combat.placement_hero[3]).stats["point_vie"]}/"
+                             f"{(combat.placement_hero[3]).stats["point_vie_max"]}")
 
-                cible = controller.combat.placement_ennemi[index]
-                controller.do_action(cible)
 
-                refresh()
 
-            hero_columns = []
-
-            for hero in controller.combat.placement_hero:
-                actif = controller.current() == hero
+            inserer_ennemis_dans_interface()
+            nom_ennemi0 = (combat.placement_ennemi[0]).stats_ajouter
+            type_ennemi0 = list(dict_ennemi[nom_ennemi0].keys())[0]
+            vie_ennemi0 = (f"{(combat.placement_ennemi[0]).stats["point_vie"]}/"
+                         f"{(combat.placement_ennemi[0]).stats["point_vie_max"]}")
+            nom_ennemi1 = (combat.placement_ennemi[1]).stats_ajouter
+            type_ennemi1 = list(dict_ennemi[nom_ennemi1].keys())[0]
+            vie_ennemi1 = (f"{(combat.placement_ennemi[1]).stats["point_vie"]}/"
+                         f"{(combat.placement_ennemi[1]).stats["point_vie_max"]}")
+            nom_ennemi2 = (combat.placement_ennemi[2]).stats_ajouter
+            type_ennemi2 = list(dict_ennemi[nom_ennemi2].keys())[0]
+            vie_ennemi2 = (f"{(combat.placement_ennemi[2]).stats["point_vie"]}/"
+                         f"{(combat.placement_ennemi[2]).stats["point_vie_max"]}")
+            nom_ennemi3 = (combat.placement_ennemi[3]).stats_ajouter
+            type_ennemi3 = list(dict_ennemi[nom_ennemi3].keys())[0]
+            vie_ennemi3 = (f"{(combat.placement_ennemi[3]).stats["point_vie"]}/"
+                         f"{(combat.placement_ennemi[3]).stats["point_vie_max"]}")
 
 
             tour_actuel = 1
