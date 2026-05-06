@@ -464,6 +464,9 @@ def main(page: ft.Page):
 
                 # -------- ENEMY UI --------
                 enemy_columns = []
+                enemmi1 = controller.combat.placement_ennemi[0]
+                type_ennemi = enemmi1.stats_ajouter
+
                 enemy_columns.append(
                         ft.Column(
                             expand=1,
@@ -479,6 +482,20 @@ def main(page: ft.Page):
                                     border=ft.Border.all(2, ft.Colors.RED_600),
                                     content=ft.Text(controller.combat.placement_ennemi[0].stats_ajouter)
                                 ),
+
+                                # IMAGE BANDIT
+                                ft.Container(
+                                    content=ft.Image(expand=True,
+                                                     src="https://img.itch.zone/aW1nLzMzMzY4OTguZ2lm/original/0Ut41Y.gif")
+                                ) if type_ennemi in ["BANDIT", "BRIGAND", "VOLEUR"] else ft.Container(),
+
+                                # IMAGE CHASSEUR
+                                ft.Container(
+                                    content=ft.Image(expand=True,
+                                                     src="https://i.redd.it/cm1vywqqri021.gif")
+                                ) if type_ennemi == "CHASSEUR" else ft.Container(),
+
+
                                 ft.Container(
                                     expand=2,
                                     alignment=ft.Alignment.CENTER,
@@ -686,7 +703,7 @@ def main(page: ft.Page):
 
             # -------- RENDER --------
             page.views.append(build_view())
-            page.update()
+        page.update()
 
 
     async def view_pop(e):
