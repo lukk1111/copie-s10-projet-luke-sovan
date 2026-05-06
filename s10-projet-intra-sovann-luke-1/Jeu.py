@@ -429,11 +429,24 @@ def main(page: ft.Page):
                                     bgcolor=ft.Colors.GREEN if actif else ft.Colors.TRANSPARENT,
                                     content=ft.Text(hero.nom, size=15)
                                 ),
+
                                 # IMAGE GUERRIER
                                 ft.Container(
                                     content=ft.Image(expand=True,
                                                      src="https://i.pinimg.com/originals/8d/6f/f3/8d6ff31f94e244db66e9e96bb87dfa70.gif")
                                 ) if hero.stats_ajouter == "GUERRIER" else ft.Container(),
+
+                                # IMAGE CHASSEUR
+                                ft.Container(
+                                    content=ft.Image(expand=True,
+                                                     src="https://isaacostlund.io/wp-content/uploads/2018/08/Archer-F-gif.gif")
+                                ) if hero.stats_ajouter == "CHASSEUR" else ft.Container(),
+
+                                # IMAGE SUPPORT
+                                ft.Container(
+                                    content=ft.Image(expand=True,
+                                                     src="https://i.pinimg.com/originals/9c/6d/a8/9c6da87a758a7e919f54e564d9930bbe.gif")
+                                ) if hero.stats_ajouter == "SUPPORT" else ft.Container(),
 
 
                                 ft.Container(
