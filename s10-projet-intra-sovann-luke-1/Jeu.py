@@ -408,6 +408,7 @@ def main(page: ft.Page):
             for hero in controller.combat.placement_hero:
                 actif = controller.current() == hero
 
+
             # -------------------- BOUCLE DE COMBAT --------------------
             def build_view():
 
@@ -428,7 +429,15 @@ def main(page: ft.Page):
                                     bgcolor=ft.Colors.GREEN if actif else ft.Colors.TRANSPARENT,
                                     content=ft.Text(hero.nom, size=15)
                                 ),
+                                # IMAGE GUERRIER
                                 ft.Container(
+                                    content=ft.Image(expand=True,
+                                                     src="https://i.pinimg.com/originals/8d/6f/f3/8d6ff31f94e244db66e9e96bb87dfa70.gif")
+                                ) if hero.stats_ajouter == "GUERRIER" else ft.Container(),
+
+
+                                ft.Container(
+
                                     expand=2,
                                     alignment=ft.Alignment.CENTER,
                                     border=ft.Border.all(2, ft.Colors.BLUE_600),
@@ -544,6 +553,7 @@ def main(page: ft.Page):
                                 border=ft.Border.all(2, ft.Colors.RED_600),
                                 content=ft.Text(
                                     f"{controller.combat.placement_ennemi[3].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
+
                                 )
                             )
                         ]
@@ -567,11 +577,12 @@ def main(page: ft.Page):
 
                                         # -------- TOP --------
                                         ft.Container(
-                                            expand=3,
-                                            padding=5,
+                                            expand=1,
+                                            padding=2,
                                             alignment=ft.Alignment.BOTTOM_CENTER,
                                             bgcolor=ft.Colors.BLACK_87,
                                             content=ft.Column(
+                                                ###
                                                 controls=[
 
                                                     # HERO + ENEMY ROW
