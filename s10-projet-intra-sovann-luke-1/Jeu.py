@@ -442,33 +442,114 @@ def main(page: ft.Page):
 
                 # -------- ENEMY UI --------
                 enemy_columns = []
-                for i, ennemi in enumerate(controller.combat.placement_ennemi):
-                    enemy_columns.append(
+                enemy_columns.append(
                         ft.Column(
                             expand=1,
                             height=400,
                             controls=[
                                 ft.ElevatedButton(
                                     "Cibler",
-                                    on_click=lambda e, idx=i: on_enemy_click(i)
+                                    on_click=lambda e, idx=0: on_enemy_click(0)
                                 ),
                                 ft.Container(
                                     expand=9,
                                     alignment=ft.Alignment.CENTER,
                                     border=ft.Border.all(2, ft.Colors.RED_600),
-                                    content=ft.Text(ennemi.stats_ajouter)
+                                    content=ft.Text(controller.combat.placement_ennemi[0].stats_ajouter)
                                 ),
                                 ft.Container(
                                     expand=2,
                                     alignment=ft.Alignment.CENTER,
                                     border=ft.Border.all(2, ft.Colors.RED_600),
                                     content=ft.Text(
-                                        f"{ennemi.stats['point_vie']}/{ennemi.stats['point_vie_max']}"
+                                        f"{controller.combat.placement_ennemi[0].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
                                     )
                                 )
                             ]
                         )
                     )
+
+                enemy_columns.append(
+                    ft.Column(
+                        expand=1,
+                        height=400,
+                        controls=[
+                            ft.ElevatedButton(
+                                "Cibler",
+                                on_click=lambda e, idx=1: on_enemy_click(1)
+                            ),
+                            ft.Container(
+                                expand=9,
+                                alignment=ft.Alignment.CENTER,
+                                border=ft.Border.all(2, ft.Colors.RED_600),
+                                content=ft.Text(controller.combat.placement_ennemi[1].stats_ajouter)
+                            ),
+                            ft.Container(
+                                expand=2,
+                                alignment=ft.Alignment.CENTER,
+                                border=ft.Border.all(2, ft.Colors.RED_600),
+                                content=ft.Text(
+                                    f"{controller.combat.placement_ennemi[1].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
+                                )
+                            )
+                        ]
+                    )
+                )
+
+                enemy_columns.append(
+                    ft.Column(
+                        expand=1,
+                        height=400,
+                        controls=[
+                            ft.ElevatedButton(
+                                "Cibler",
+                                on_click=lambda e, idx=2: on_enemy_click(2)
+                            ),
+                            ft.Container(
+                                expand=9,
+                                alignment=ft.Alignment.CENTER,
+                                border=ft.Border.all(2, ft.Colors.RED_600),
+                                content=ft.Text(controller.combat.placement_ennemi[2].stats_ajouter)
+                            ),
+                            ft.Container(
+                                expand=2,
+                                alignment=ft.Alignment.CENTER,
+                                border=ft.Border.all(2, ft.Colors.RED_600),
+                                content=ft.Text(
+                                    f"{controller.combat.placement_ennemi[2].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
+                                )
+                            )
+                        ]
+                    )
+                )
+
+                enemy_columns.append(
+                    ft.Column(
+                        expand=1,
+                        height=400,
+                        controls=[
+                            ft.ElevatedButton(
+                                "Cibler",
+                                on_click=lambda e, idx=3: on_enemy_click(3)
+                            ),
+                            ft.Container(
+                                expand=9,
+                                alignment=ft.Alignment.CENTER,
+                                border=ft.Border.all(2, ft.Colors.RED_600),
+                                content=ft.Text(controller.combat.placement_ennemi[3].stats_ajouter)
+                            ),
+                            ft.Container(
+                                expand=2,
+                                alignment=ft.Alignment.CENTER,
+                                border=ft.Border.all(2, ft.Colors.RED_600),
+                                content=ft.Text(
+                                    f"{controller.combat.placement_ennemi[3].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
+                                )
+                            )
+                        ]
+                    )
+                )
+
 
                 return ft.View(
                     route="/jouer",
