@@ -1,0 +1,118 @@
+
+https://code-with-me.global.jetbrains.com/NR8Ypz0g62SvIc2dh1A74g
+
+
+    def action_guerir(self, dict_abilite: dict):
+        """ Soigner une cible. Soi-même ou un autre héro. """
+
+        cible_points_vie = self.cible.stats["point_vie"] # Points de vie de la cible
+        cible_points_vie_max = self.cible.stats["points_vie_max"]
+
+        dict_type_actions = self.raccourci_dict_abilite(dict_abilite)
+        for types_actions, nom_actions in dict_type_actions.items():
+            if types_actions == "ACTION_GUERIR":
+                if self.nom_action in nom_actions: # si EAU_DIVINE est là
+                    effet = nom_actions[self.nom_action] # effet = accéder à la valeur de EAU DIVINE, qui est : {"cible_possible": [0,1,2,3], "point_guerison": 3 }}
+
+                    if "point_guerison" in effet:
+                        soin = effet["point_guerion"]
+                    else:
+                        raise Exception("Aucun point de guérison.")
+
+                    print(f"Points de vie de la cible avant soin ({cible_points_vie})")
+
+                    if cible_points_vie_max > cible_points_vie:
+                        cible_points_vie += soin
+                    else:
+                        print("Ne peut pas dépasser le points de vie max .")
+
+                    return
+
+
+
+
+Abilite_Hero.json
+{
+  "GUERRIER": {
+              "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": 1},
+      "DEPLACER_ARRIERE": {"changer_index": -1}},
+              "ACTION_ATTAQUE": {
+      "LAME_TRANCHER": {"type_degat": "degat_melee","cible_possible": [0,1],"degat_zone": null},
+      "LAME_PERCANTE":   {"type_degat": "degat_melee","cible_possible": [0],"degat_zone": [1]},
+      "LANCER_ROCHE": {"type_degat": "degat_distance","cible_possible": [0,1,2,3],"degat_zone": null}},
+              "ACTION_MODIFIER": {
+      "CONCENTRATION": {"point_affecter":  "degat_melee", "point": 2, "zone": null, "reste_apres":  false},
+      "ECHAUFFEMENT": {"point_affecter": "point_agilite", "point": 1, "zone": null, "reste_apres":  false},
+      "ENCOURAGEMENT": {"point_affecter":  ["degat_melee","point_agilite"], "point": 2}},
+              "ACTION_BLOQUER": {
+      "BLOQUER": {"chance_bloquer": 0.7, "reduction_degats": 0.5}},
+              "ACTION_PASSER": {
+      "PASSER": {"cible": null}
+
+  },
+  "CHASSEUR": {
+              "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": 1},
+      "DEPLACER_ARRIERE": {"changer_index": -1}},
+              "ACTION_ATTAQUE": {
+      "TIR_RAPIDE": {"type_degat": "degat_distance","cible_possible": [0,1,2,3],"degat_zone": false},
+      "TIR_PRECIS": {"type_degat": "degat_distance","cible_possible": [0,1,2,3],"degat_zone": false}},
+              "ACTION_GUERIR": {
+      "POINTAGE": {"___": "+___"}}
+  },
+  "SUPPORT": {
+              "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": 1},
+      "DEPLACER_ARRIERE": {"changer_index": -1}},
+              "ACTION_GUERIR": {
+      "EAU_DIVINE": {"cible_possible": [0,1,2,3], "point_guerison": 3 }}
+  }
+
+}}
+
+
+
+
+    def action_attaque(self, dict_actions:dict):
+        """ Fonction d'attaque, sert à enlever des ["point_vie"] de la cible dépendant
+        des points de mélee et des points de distance."""
+        print(f"Point de vie de {self.cible.stats_ajouter}: "
+              f"{self.cible.stats["point_vie"]}")
+        for nom_action, dict_effet in dict_actions.items():
+            if dict_effet["type_degat"] == "degat_melee":
+                self.cible.stats["point_vie"] -= self.personnage.stats["degat_melee"]
+            elif dict_effet["type_degat"] == "degat_distance":
+                self.cible.stats["point_vie"] -= self.personnage.stats["degat_distance"]
+            if self.cible.stats["point_vie"] <= 0: self.cible.stats["point_vie"] = 0
+            break
+        print(f"Point de vie de {self.cible.stats_ajouter}: "
+              f"{self.cible.stats["point_vie"]}")
+
+
+
+    def systeme_tours(self, dict_heros:dict):
+        """ Système de tours, Tous les personnages 'Hero','Ennemi'
+        jouent leurs actions. Après toutes les actions, le tour est
+        terminé. 'nombre_personnage' est 8 = héro + ennemi. """
+        nombre_personnage = len(self.placement_hero)
+        nombre_personnage += len(self.placement_ennemi)
+        # Paramètre pour le début de chacun des combats.
+        conclusion = "Continue"
+        tours_combat = 0
+        while conclusion == "Continue":
+            for act in range(nombre_personnage):
+                ordres_personnage = self.evaluation_agilite_personnage()
+                for personnage in ordres_personnage:
+                    action = input("Qu'elle est l'action: ")
+                    cible = input("Qui est la cible: ")
+                    action = Action(personnage, action, cible)
+                verification = self.verifier_equipe_vivante(dict_heros)
+                if verification == "0 heros vivants": conclusion = "Defeat"
+                if verification == "0 ennemis vivants": conclusion = "Victoire"
+                if conclusion == "Defeat" or conclusion == "Victoire": break
+            if conclusion == "Defeat" or conclusion == "Victoire": break
+            tours_combat += 1
+            print(f"tour:{tours_combat}")
+        print(f"{conclusion}")
+        return conclusion

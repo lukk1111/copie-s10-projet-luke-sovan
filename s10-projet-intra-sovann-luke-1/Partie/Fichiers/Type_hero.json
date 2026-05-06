@@ -1,0 +1,43 @@
+{
+    "": {
+        "description": "Pas de spécialisation, mais pas de faiblesse non plus.",
+        "degat_melee": 0,
+        "degat_distance": 0,
+        "point_vie_max": 0,
+        "point_vie": 0,
+        "point_agilite": 0,
+        "point_chance": 0
+    },
+    "GUERRIER": {
+        "description": "Spécialisé en combat de mélée, perd des points de distance.",
+        "degat_melee": 2,
+        "degat_distance": -2,
+        "point_vie_max": 8,
+        "point_agilite": 2,
+        "point_chance": 0
+    },
+    "CHASSEUR": {
+        "description": "Spécialisé en combat en distance, perd des points de mélée.",
+        "degat_melee": -2,
+        "degat_distance": 2,
+        "point_vie_max": 6,
+        "point_agilite": 2,
+        "point_chance": 0
+    },
+    "SUPPORT": {
+        "description": "Gagne peu de points, mais possède des abilités qui peut soigner.",
+        "degat_melee": 0,
+        "degat_distance": 0,
+        "point_vie_max": 4,
+        "point_agilite": 2,
+        "point_chance": 0
+    },
+    "GUARDE": {
+        "description": "Spécialisé en défence, perd des points d'agilité.",
+        "degat_melee": 0,
+        "degat_distance": -2,
+        "point_vie_max": 12,
+        "point_agilite": -2,
+        "point_chance": 0
+    }
+}

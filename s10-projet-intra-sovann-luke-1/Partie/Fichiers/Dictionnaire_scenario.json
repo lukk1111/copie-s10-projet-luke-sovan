@@ -1,0 +1,18 @@
+{
+  "FORET": {
+  "01": ["VOLEUR","VOLEUR","VOLEUR","VOLEUR"],
+  "02": ["BANDIT","BANDIT","VOLEUR","CHASSEUR"],
+  "03": ["BANDIT","BANDIT","CHASSEUR","CHASSEUR"],
+  "04": ["BRIGAND","BANDIT","BANDIT","CHASSEUR"],
+  "05": ["BRIGAND","BRIGAND","VOLEUR","VOLEUR"],
+  "06": ["BUCHE","BUCHE","CHASSEUR","CHASSEUR"],
+  "07": [],
+  "08": [],
+  "09": ["BANDIT","BANDIT","CHEF_BANDIT","CHASSEUR"],
+  "10": ["BRIGAND","BRIGAND","CHEF_BRIGAND","VOLEUR"]
+  },
+  "VILLAGE": {
+  "01": ["Bob"],
+  "10": ["Boss2"]
+  }
+}

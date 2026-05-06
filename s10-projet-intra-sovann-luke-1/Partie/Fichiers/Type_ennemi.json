@@ -1,0 +1,39 @@
+{
+  "VOLEUR": {
+    "degat_melee": 2, "degat_distance": 2, "point_vie_max": 8,
+    "point_agilite": 2, "point_chance": 0},
+  "BANDIT": {
+    "degat_melee": 4, "degat_distance": 0, "point_vie_max": 12,
+    "point_agilite": 4, "point_chance": 2},
+  "CHASSEUR": {
+    "degat_melee": 0, "degat_distance": 4, "point_vie_max": 12,
+    "point_agilite": 4, "point_chance": 2},
+  "BRIGAND": {
+    "degat_melee": 4, "degat_distance": 2, "point_vie_max": 16,
+    "point_agilite": 2, "point_chance": 2},
+  "LOUP": {
+    "degat_melee": 2, "degat_distance": 0, "point_vie_max": 6,
+    "point_agilite": 6, "point_chance": 2},
+  "BUCHE": {
+    "degat_melee": 0, "degat_distance": 0, "point_vie_max": 20,
+    "point_agilite": 0, "point_chance": 0},
+
+
+  "CHEF_BRIGAND": {
+    "degat_melee": 8, "degat_distance": 4, "point_vie_max": 42,
+    "point_agilite": 4, "point_chance": 4},
+  "CHEF_PILLEUR" : {
+    "degat_melee": 12, "degat_distance": 8, "point_vie_max": 60,
+    "point_agilite": 2, "point_chance": 4},
+
+
+  "MERCENAIRE": {
+    "degat_melee": 8, "degat_distance": 0, "point_vie_max": 24,
+    "point_agilite": 2, "point_chance": 2},
+  "CHASSEUR_PRIME": {
+    "degat_melee": 0, "degat_distance": 8, "point_vie_max": 12,
+    "point_agilite": 4, "point_chance": 2}
+
+
+
+}

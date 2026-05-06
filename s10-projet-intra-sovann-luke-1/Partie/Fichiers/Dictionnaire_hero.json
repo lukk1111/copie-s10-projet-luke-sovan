@@ -1,0 +1,42 @@
+{
+    "HENRY": {
+        "GUERRIER": {
+            "degat_melee": 6,
+            "degat_distance": 2,
+            "point_vie_max": 28,
+            "point_vie": 28,
+            "point_agilite": 6,
+            "point_chance": 6
+        }
+    },
+    "HANS": {
+        "CHASSEUR": {
+            "degat_melee": 2,
+            "degat_distance": 4,
+            "point_vie_max": 26,
+            "point_vie": 26,
+            "point_agilite": 4,
+            "point_chance": 0
+        }
+    },
+    "CHERNOV": {
+        "CHASSEUR": {
+            "degat_melee": 2,
+            "degat_distance": 6,
+            "point_vie_max": 30,
+            "point_vie": 30,
+            "point_agilite": 4,
+            "point_chance": 2
+        }
+    },
+    "ELOISE": {
+        "SUPPORT": {
+            "degat_melee": 4,
+            "degat_distance": 4,
+            "point_vie_max": 24,
+            "point_vie": 24,
+            "point_agilite": 4,
+            "point_chance": 6
+        }
+    }
+}

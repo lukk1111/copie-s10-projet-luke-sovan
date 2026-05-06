@@ -1,0 +1,98 @@
+{
+  "": {
+    "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": [-1]},
+      "DEPLACER_ARRIERE": {"changer_index": [1]}
+    },
+    "ACTION_ATTAQUE": {
+      "LAME_COUPANTE": {"type_degat": "degat_melee","cible_possible": [0,1]}
+    },
+    "ACTION_GUERIR": {
+      "___": {"___": "+___"}
+    },
+    "ACTION_BLOQUER": {
+      "___": {"___": "+___"}
+    },
+    "ACTION_PASSER": {
+      "PASSER": {"cible": null}
+    }
+  },
+
+  "GUERRIER": {
+    "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": [-1]},
+      "DEPLACER_ARRIERE": {"changer_index": [1]}
+    },
+    "ACTION_ATTAQUE": {
+      "LAME_PERCANTE": {"type_degat": "degat_melee","cible_possible": [0,1]},
+      "LANCER_ROCHE": {"type_degat": "degat_distance","cible_possible": [0,1,2,3]}
+    },
+    "ACTION_GUERIR": {
+      "___": {"___": "+___"}
+    },
+    "ACTION_BLOQUER": {
+      "BLOQUER": {"chance_bloquer": 0.3, "reduction_degats": 0.3}
+    },
+    "ACTION_PASSER": {
+      "PASSER": {"cible": null}
+    }
+  },
+
+  "CHASSEUR": {
+    "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": [-1]},
+      "DEPLACER_ARRIERE": {"changer_index": [1]}
+    },
+    "ACTION_ATTAQUE": {
+      "TIR_RAPIDE": {"type_degat": "degat_distance","cible_possible": [0,1,2,3]},
+      "TIR_PRECIS": {"type_degat": "degat_distance","cible_possible": [0,1,2,3]}
+    },
+    "ACTION_GUERIR": {
+      "___": {"___": "+___"}
+    },
+    "ACTION_BLOQUER": {
+      "___": {"___": "+___"}
+    },
+    "ACTION_PASSER": {
+      "PASSER": {"cible": null}
+    }
+  },
+
+  "SUPPORT": {
+    "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": [-1]},
+      "DEPLACER_ARRIERE": {"changer_index": [1]}
+    },
+    "ACTION_ATTAQUE": {
+      "COUP_BATON": {"type_degat": "degat_melee","cible_possible": [0,1]}
+    },
+    "ACTION_GUERIR": {
+      "EAU_DIVINE": {"cible_possible": [0,1,2,3], "point_guerison": 3}
+    },
+    "ACTION_BLOQUER": {
+      "___": {"___": "+___"}
+    },
+    "ACTION_PASSER": {
+      "PASSER": {"cible": null}
+    }
+  },
+
+  "GUARDE": {
+    "ACTION_DEPLACER": {
+      "DEPLACER_AVANT": {"changer_index": [-1]},
+      "DEPLACER_ARRIERE": {"changer_index": [1]}
+    },
+    "ACTION_ATTAQUE": {
+      "COUP_BATON": {"type_degat": "degat_melee","cible_possible": [0,1]}
+    },
+    "ACTION_GUERIR": {
+      "___": {"___": "+___"}
+    },
+    "ACTION_BLOQUER": {
+      "BLOQUER": {"chance_bloquer": 0.7, "reduction_degats": 0.5}
+    },
+    "ACTION_PASSER": {
+      "PASSER": {"cible": null}
+    }
+  }
+}
