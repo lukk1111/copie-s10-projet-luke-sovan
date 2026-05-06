@@ -569,6 +569,8 @@ def main(page: ft.Page):
                                         ft.Container(
                                             expand=3,
                                             padding=5,
+                                            alignment=ft.Alignment.BOTTOM_CENTER,
+                                            bgcolor=ft.Colors.BLACK_87,
                                             content=ft.Column(
                                                 controls=[
 
