@@ -558,14 +558,17 @@ def main(page: ft.Page):
                             expand=True,
                             content=ft.Container(
                                 expand=True,
+                                padding = 0,
+                                border=ft.Border.all(2, ft.Colors.BLUE),
+                                border_radius=00,
                                 bgcolor=ft.Colors.BLACK,
                                 content=ft.Column(
-                                    expand=True,
-                                    controls=[
+                                    expand=True, height=page.height, controls=[
 
                                         # -------- TOP --------
                                         ft.Container(
                                             expand=3,
+                                            padding=5,
                                             content=ft.Column(
                                                 controls=[
 
