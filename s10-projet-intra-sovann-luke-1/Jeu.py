@@ -730,14 +730,29 @@ def main(page: ft.Page):
                                             )
                                         ),
 
-                                        # -------- BOTTOM --------
+                                        # -------- BOTTOM CONTAINER --------
                                         ft.Container(
-                                            height=250,
+                                            height=333,
+
+                                            padding=1,
+                                            border_radius=00,
                                             bgcolor=ft.Colors.GREY_900,
                                             content=ft.Row(
                                                 controls=[
 
-                                                    ft.Container(expand=1),
+                                                    ft.Container(expand=1, border=ft.Border.all(2, ft.Colors.BLACK)),
+                                                    ft.Container(
+                                                        expand=2,
+                                                        alignment=ft.Alignment.TOP_CENTER,
+                                                        border=ft.Border.all(2, ft.Colors.BLACK),
+                                                        border_radius=00,
+                                                        bgcolor=ft.Colors.GREY_900,
+                                                        content=ft.Row(controls=[
+                                                            ft.Text(f"Tour de : {controller.personnage_actuel().nom}"
+                                                                    "\n"
+                                                                    "\nChoisissez une attaque spécifique"
+                                                                    "\npour attaquer un ennemi")
+                                                        ])),
 
                                                     # ACTIONS
                                                     ft.Container(
@@ -749,7 +764,7 @@ def main(page: ft.Page):
                                                                 ft.Row(
                                                                     controls=[
                                                                         ft.Button(
-                                                                            "Attaques",
+                                                                            "𝘼𝙩𝙩𝙖𝙦𝙪𝙚𝙨",
                                                                             on_click=on_attack_click
                                                                         ),
                                                                         ft.Button("Passer"),
@@ -758,7 +773,7 @@ def main(page: ft.Page):
 
                                                                 ft.Column(
                                                                     controls=[
-                                                                        ft.Text("Actions:"),
+                                                                        ft.Text("Liste d'attaques:"),
                                                                         *[ft.Button(
                                                                             action,on_click=lambda e, a=action: on_action_select(a))
                                                                             for action in
