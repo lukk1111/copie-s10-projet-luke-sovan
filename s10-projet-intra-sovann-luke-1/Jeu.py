@@ -400,7 +400,7 @@ def main(page: ft.Page):
 
                 cible = controller.combat.placement_ennemi[index]
                 controller.do_action(cible)
-
+                controller.available_actions = ""
                 refresh()
 
             hero_columns = []
@@ -482,7 +482,7 @@ def main(page: ft.Page):
                             expand=1,
                             height=400,
                             controls=[
-                                ft.ElevatedButton(
+                                ft.Button(
                                     "Cibler",
                                     on_click=lambda e, idx=0: on_enemy_click(0)
                                 ),
@@ -524,7 +524,7 @@ def main(page: ft.Page):
                         expand=1,
                         height=400,
                         controls=[
-                            ft.ElevatedButton(
+                            ft.Button(
                                 "Cibler",
                                 on_click=lambda e, idx=1: on_enemy_click(1)
                             ),
@@ -565,7 +565,7 @@ def main(page: ft.Page):
                         expand=1,
                         height=400,
                         controls=[
-                            ft.ElevatedButton(
+                            ft.Button(
                                 "Cibler",
                                 on_click=lambda e, idx=2: on_enemy_click(2)
                             ),
@@ -606,7 +606,7 @@ def main(page: ft.Page):
                         expand=1,
                         height=400,
                         controls=[
-                            ft.ElevatedButton(
+                            ft.Button(
                                 "Cibler",
                                 on_click=lambda e, idx=3: on_enemy_click(3)
                             ),
@@ -651,7 +651,7 @@ def main(page: ft.Page):
                             content=ft.Container(
                                 expand=True,
                                 padding = 0,
-                                border=ft.Border.all(2, ft.Colors.BLUE),
+                                border=ft.Border.all(2, ft.Colors.BLACK),
                                 border_radius=00,
                                 bgcolor=ft.Colors.BLACK,
                                 content=ft.Column(
@@ -713,25 +713,19 @@ def main(page: ft.Page):
 
                                                                 ft.Row(
                                                                     controls=[
-                                                                        ft.ElevatedButton(
+                                                                        ft.Button(
                                                                             "Attaque",
                                                                             on_click=on_attack_click
                                                                         ),
-                                                                        ft.ElevatedButton("Passer"),
+                                                                        ft.Button("Passer"),
                                                                     ]
                                                                 ),
 
                                                                 ft.Column(
                                                                     controls=[
                                                                         ft.Text("Actions:"),
-
-                                                                        *[
-                                                                            ft.ElevatedButton(
-                                                                                action,
-                                                                                on_click=lambda e,
-                                                                                                a=action: on_action_select(
-                                                                                    a)
-                                                                            )
+                                                                        *[ft.Button(
+                                                                            action,on_click=lambda e, a=action: on_action_select(a))
                                                                             for action in
                                                                             getattr(controller, "available_actions", [])
                                                                         ]
