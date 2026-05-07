@@ -49,9 +49,8 @@ class Combat:
 
     def inserer_heros(self, dict_heros: dict, dict_type_hero: dict):
         """ Fonction qui permet d'insérer les heros dans
-        'Dictionnaire_hero.json' dans 'self.placement_hero'. Je ne sais
-        pas comment transporter des classes complètes dans un fichier.json,
-        donc ils seront créer ici. """
+        'Dictionnaire_hero.json' dans 'self.placement_hero'. Classes complètes dans un fichier.json,
+        ils seront créés ici. """
         liste_nom = []
         liste_type = []
         liste_stat = []
