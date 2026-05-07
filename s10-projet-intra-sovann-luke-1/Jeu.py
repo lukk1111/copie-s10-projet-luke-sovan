@@ -376,6 +376,12 @@ def main(page: ft.Page):
 
 
             def refresh():
+                if controller.enemy_turn:
+                    controller.enemy_turn = False
+
+                    controller.enemmi_phase()
+                    page.run_task(clear_message)
+
                 page.views[-1] = build_view()
                 page.update()
 
@@ -399,6 +405,11 @@ def main(page: ft.Page):
                 cible = controller.combat.placement_ennemi[index]
                 controller.do_action(cible)
                 controller.available_actions = ""
+                refresh()
+
+            async def clear_message():
+                await asyncio.sleep(5)
+                controller.message_combat = ""
                 refresh()
 
             # -------------------- BOUCLE DE COMBAT --------------------
@@ -785,8 +796,23 @@ def main(page: ft.Page):
                                                         )
                                                     ),
 
+
+
                                                     ft.Container(expand=2),
                                                     ft.Container(expand=1),
+                                                    # Container en bas à droite
+                                                    ft.Container(
+                                                        expand=2,
+                                                        alignment=ft.Alignment.TOP_CENTER,
+                                                        border=ft.Border.all(2, ft.Colors.BLACK),
+                                                        border_radius=00,
+                                                        bgcolor=ft.Colors.GREY_900,
+                                                        content=ft.Column(scroll=ft.ScrollMode.AUTO,  # important
+                                                        controls=[ft.Text(msg, color=ft.Colors.RED, size=14)
+                                                        for msg in controller.messages_combat
+                                                        ])),
+                                                    # Container d'espacement.
+                                                    ft.Container(expand=1, border=ft.Border.all(2, ft.Colors.BLACK))
                                                 ]
                                             )
                                         )

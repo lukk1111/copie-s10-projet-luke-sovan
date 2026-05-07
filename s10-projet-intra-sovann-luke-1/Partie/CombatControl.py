@@ -27,6 +27,8 @@ class CombatController:
         self.action = None # Action choisie par le joueur.
         self.cible = None # Cible de l'action
         self.etat_combat = None
+        self.messages_combat = []
+        self.enemy_turn = False
 
     def init_combat(self): # Initialisation du combat
         if not (0 < len(self.dict_heros) <= 4): # Minimum 1 héro. Maximum 4 héros.
@@ -64,6 +66,7 @@ class CombatController:
         self.index += 1 # avancer d'un index.
 
         if self.index >= len(self.ordre): # Vérifier si on arrive à la fin de la liste
+            self.enemy_turn = True
             self.enemmi_phase() # Si les tous les héros ont joué, les ennemis attaquent
 
             resultat = self.check_fin_combat()
@@ -80,6 +83,8 @@ class CombatController:
         ennemis = [e for e in self.combat.placement_ennemi if e.stats["point_vie"] > 0]
         heros = [h for h in self.combat.placement_hero if h.stats["point_vie"] > 0] # Liste des héros vivants
 
+        self.messages_combat = []
+
         for ennemi in ennemis:
             if heros:
                 cible = random.choice(heros)
@@ -87,6 +92,10 @@ class CombatController:
 
                 if cible.stats["point_vie"] < 0: # empêcher les points de vie négatifs
                     cible.stats["point_vie"] = 0
+
+                self.messages_combat.append(
+                    f"{ennemi.stats_ajouter} attaque {cible.nom}"
+                )
 
     def do_action(self, cible):
         perso = self.personnage_actuel()
@@ -110,7 +119,8 @@ class CombatController:
         if not ennemis_vivants:
             return "🎆 VICTOIRE 🎆"
 
-
         return None
 
+    def set_message_combat(self, message):
+        self.message_combat = message
     
