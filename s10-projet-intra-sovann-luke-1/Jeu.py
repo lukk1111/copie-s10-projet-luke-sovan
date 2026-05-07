@@ -374,7 +374,6 @@ def main(page: ft.Page):
 
             controller.init_combat() # Démarrer le combat
 
-
             def refresh():
                 if controller.enemy_turn:
                     controller.enemy_turn = False
