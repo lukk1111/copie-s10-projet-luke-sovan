@@ -51,9 +51,13 @@ class CombatController:
         if not self.ordre:
             return None
 
-        if self.index >= len(self.ordre):
+        perso = self.ordre[self.index]
+
+        #  bloquer les ennemis dans UI
+        if isinstance(perso, Ennemi):
             return None
-        return self.ordre[self.index]
+
+        return perso
 
     def prochain_personnage(self):
         self.index += 1 # avancer d'un index.
