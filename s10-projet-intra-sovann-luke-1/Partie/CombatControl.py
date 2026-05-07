@@ -48,22 +48,22 @@ class CombatController:
         self.index += 1
 
         if self.index >= len(self.ordre):
-            self.enemy_phase()
+            self.enemmi_phase()
             self.tour += 1
             self.next_turn()
 
-    def enemy_phase(self):
+    def enemmi_phase(self):
         import random
 
         ennemis = [e for e in self.combat.placement_ennemi if e.stats["point_vie"] > 0]
-        heros = [h for h in self.combat.placement_hero if h.stats["point_vie"] > 0]
+        heros = [h for h in self.combat.placement_hero if h.stats["point_vie"] > 0] # Liste des héros vivants
 
         for ennemi in ennemis:
             if heros:
                 cible = random.choice(heros)
                 cible.stats["point_vie"] -= ennemi.stats["degat_melee"]
 
-                if cible.stats["point_vie"] < 0:
+                if cible.stats["point_vie"] < 0: # empêcher les points de vie négatifs
                     cible.stats["point_vie"] = 0
 
     def do_action(self, cible):

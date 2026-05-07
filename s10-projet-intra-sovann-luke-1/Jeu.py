@@ -382,7 +382,7 @@ def main(page: ft.Page):
                 page.update()
 
             def on_attack_click(e):
-                perso = controller.current()
+                perso = controller.personnage_actuel()
                 type_perso = perso.stats_ajouter
 
                 actions = controller.dict_abilite[type_perso]["ACTION_ATTAQUE"]
@@ -406,7 +406,7 @@ def main(page: ft.Page):
             hero_columns = []
 
             for hero in controller.combat.placement_hero:
-                actif = controller.current() == hero
+                actif = controller.personnage_actuel() == hero
 
 
             # -------------------- BOUCLE DE COMBAT --------------------
@@ -415,7 +415,7 @@ def main(page: ft.Page):
                 # -------- HERO UI --------
                 hero_columns = []
                 for hero in controller.combat.placement_hero:
-                    actif = controller.current() == hero
+                    actif = controller.personnage_actuel() == hero
 
                     hero_columns.append(
                         ft.Column(
