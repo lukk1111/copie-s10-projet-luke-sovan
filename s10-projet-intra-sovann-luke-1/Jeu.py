@@ -505,6 +505,12 @@ def main(page: ft.Page):
                                                      src="https://i.redd.it/cm1vywqqri021.gif")
                                 ) if type_ennemi1 == "CHASSEUR" else ft.Container(),
 
+                                # IMAGE BUCHE
+                                ft.Container(
+                                    content=ft.Image(expand=True,
+                                                     src="https://img.itch.zone/aW1nLzQyNDU0MjMucG5n/original/Ip09oS.png")
+                                ) if type_ennemi1 == "BUCHE" else ft.Container(),
+
 
                                 ft.Container(
                                     expand=2,
@@ -547,6 +553,12 @@ def main(page: ft.Page):
                                                  src="https://i.redd.it/cm1vywqqri021.gif")
                             ) if type_ennemi2 == "CHASSEUR" else ft.Container(),
 
+                            # IMAGE BUCHE
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://img.itch.zone/aW1nLzQyNDU0MjMucG5n/original/Ip09oS.png")
+                            ) if type_ennemi2 == "BUCHE" else ft.Container(),
+
                             ft.Container(
                                 expand=2,
                                 alignment=ft.Alignment.CENTER,
@@ -588,6 +600,12 @@ def main(page: ft.Page):
                                                  src="https://i.redd.it/cm1vywqqri021.gif")
                             ) if type_ennemi3 == "CHASSEUR" else ft.Container(),
 
+                            # IMAGE BUCHE
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://img.itch.zone/aW1nLzQyNDU0MjMucG5n/original/Ip09oS.png")
+                            ) if type_ennemi3 == "BUCHE" else ft.Container(),
+
                             ft.Container(
                                 expand=2,
                                 alignment=ft.Alignment.CENTER,
@@ -628,6 +646,12 @@ def main(page: ft.Page):
                                 content=ft.Image(expand=True,
                                                  src="https://i.redd.it/cm1vywqqri021.gif")
                             ) if type_ennemi4 == "CHASSEUR" else ft.Container(),
+
+                            # IMAGE BUCHE
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://img.itch.zone/aW1nLzQyNDU0MjMucG5n/original/Ip09oS.png")
+                            ) if type_ennemi4 == "BUCHE" else ft.Container(),
 
                             ft.Container(
                                 expand=2,
