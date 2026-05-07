@@ -372,7 +372,7 @@ def main(page: ft.Page):
                 "type_hero": dict_type_hero
             })
 
-            controller.init_combat()
+            controller.init_combat() # Démarrer le combat
 
 
             tour_actuel = 1

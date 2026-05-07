@@ -38,10 +38,22 @@ class CombatController:
         self.next_turn() # Démarrage du premier tour
 
     def next_turn(self): # Prépare un nouveau tour
-        self.ordre = self.combat.evaluation_agilite_personnage()
-        self.index = 0 # Le 1er personnage peut jouer
+        ordre_complet = self.combat.evaluation_agilite_personnage()
+
+        # Garder seulement les héros vivants
+        self.ordre = [
+            p for p in ordre_complet
+            if isinstance(p, Hero) and p.stats["point_vie"] > 0
+        ]
+
+        self.index = 0
 
     def personnage_actuel(self):
+        if not self.ordre:
+            return None
+
+        if self.index >= len(self.ordre):
+            return None
         return self.ordre[self.index]
 
     def prochain_personnage(self):
