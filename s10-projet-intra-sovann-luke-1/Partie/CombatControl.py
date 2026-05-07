@@ -108,7 +108,8 @@ class CombatController:
         if not heros_vivants:
             return "DEFAITE"
         if not ennemis_vivants:
-            return "VICTOIRE"
+            return "🎆 VICTOIRE 🎆"
+
 
         return None
 
