@@ -63,12 +63,6 @@ class Combat:
         liste_hero = []
         # Boucle créant des variables selon le nombre de heros.
         for hero in range(len(liste_nom)):
-            # Luke, je sais comment expliquer cette partie, je ne sais pas comment ça marche non plus.
-            # Vu qu'on n'a pas vu en classe, j'ai trouvé cette fonction dans ce lien (deuxième solution) :
-            # https://stackoverflow.com/questions/6181935/how-do-you-create-different-variable-names-while-in-a-loop
-            # Ça n'a pas fonctionné à cause du symbole '%' qui ne converti pas 'hero%s' en variable.
-            # J'ai cherché comment réparer le problème et le symbole '%' a été remplacer par 'format()' (première solution) :
-            # https://stackoverflow.com/questions/18053500/why-do-i-get-typeerror-not-all-arguments-converted-during-string-formatting-t
             globals()['hero$s' .format(hero)] = Hero(liste_nom[hero],"HERO")
             globals()['hero$s' .format(hero)].attribuer_stat(liste_type[hero],dict_type_hero)
             globals()['hero$s' .format(hero)].stats = liste_stat[hero]
