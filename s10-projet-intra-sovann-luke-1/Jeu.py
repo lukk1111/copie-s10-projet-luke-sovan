@@ -407,6 +407,25 @@ def main(page: ft.Page):
 
             # -------------------- BOUCLE DE COMBAT --------------------
             def build_view():
+                if controller.etat_combat:
+                    return ft.View(
+                        route="/jouer",
+                        controls=[
+                            ft.SafeArea(
+                                expand=True,
+                                content=ft.Container(
+                                    expand=True,
+                                    alignment=ft.Alignment.CENTER,
+                                    bgcolor=ft.Colors.BLACK,
+                                    content=ft.Text(
+                                        controller.etat_combat,
+                                        size=50,
+                                        color=ft.Colors.WHITE
+                                    )
+                                )
+                            )
+                        ]
+                    )
 
                 # -------- HERO UI --------
                 hero_columns = []
@@ -663,6 +682,7 @@ def main(page: ft.Page):
                 )
 
                 # VIEW ------------------------------------------
+
                 return ft.View(
                     route="/jouer",
                     controls=[

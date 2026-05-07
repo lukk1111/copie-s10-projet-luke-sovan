@@ -26,6 +26,7 @@ class CombatController:
 
         self.action = None # Action choisie par le joueur.
         self.cible = None # Cible de l'action
+        self.etat_combat = None
 
     def init_combat(self): # Initialisation du combat
         if not (0 < len(self.dict_heros) <= 4): # Minimum 1 héro. Maximum 4 héros.
@@ -64,6 +65,12 @@ class CombatController:
 
         if self.index >= len(self.ordre): # Vérifier si on arrive à la fin de la liste
             self.enemmi_phase() # Si les tous les héros ont joué, les ennemis attaquent
+
+            resultat = self.check_fin_combat()
+            if resultat:
+                self.etat_combat = resultat
+                return
+
             self.tour += 1 # Le tour augmente
             self.next_turn() # Un nouveau tour commence
 
@@ -89,5 +96,20 @@ class CombatController:
 
         self.action = None
         self.prochain_personnage()
+
+        resultat = self.check_fin_combat()
+        if resultat:
+            self.etat_combat = resultat
+
+    def check_fin_combat(self):
+        heros_vivants = any(h.stats["point_vie"] > 0 for h in self.combat.placement_hero)
+        ennemis_vivants = any(e.stats["point_vie"] > 0 for e in self.combat.placement_ennemi)
+
+        if not heros_vivants:
+            return "DEFAITE"
+        if not ennemis_vivants:
+            return "VICTOIRE"
+
+        return None
 
     
