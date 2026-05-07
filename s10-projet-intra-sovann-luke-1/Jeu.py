@@ -463,11 +463,21 @@ def main(page: ft.Page):
                     )
 
                 # -------- ENEMY UI --------
-                enemy_columns = []
+                enemmi_colonnes = []
                 enemmi1 = controller.combat.placement_ennemi[0]
-                type_ennemi = enemmi1.stats_ajouter
+                type_ennemi1 = enemmi1.stats_ajouter
 
-                enemy_columns.append(
+                enemmi2 = controller.combat.placement_ennemi[1]
+                type_ennemi2 = enemmi2.stats_ajouter
+
+                enemmi3 = controller.combat.placement_ennemi[2]
+                type_ennemi3 = enemmi3.stats_ajouter
+
+                enemmi4 = controller.combat.placement_ennemi[3]
+                type_ennemi4 = enemmi4.stats_ajouter
+
+                # ENNEMI POSITION 1 ------------
+                enemmi_colonnes.append(
                         ft.Column(
                             expand=1,
                             height=400,
@@ -487,13 +497,13 @@ def main(page: ft.Page):
                                 ft.Container(
                                     content=ft.Image(expand=True,
                                                      src="https://img.itch.zone/aW1nLzMzMzY4OTguZ2lm/original/0Ut41Y.gif")
-                                ) if type_ennemi in ["BANDIT", "BRIGAND", "VOLEUR"] else ft.Container(),
+                                ) if type_ennemi1 in ["BANDIT", "BRIGAND", "VOLEUR"] else ft.Container(),
 
                                 # IMAGE CHASSEUR
                                 ft.Container(
                                     content=ft.Image(expand=True,
                                                      src="https://i.redd.it/cm1vywqqri021.gif")
-                                ) if type_ennemi == "CHASSEUR" else ft.Container(),
+                                ) if type_ennemi1 == "CHASSEUR" else ft.Container(),
 
 
                                 ft.Container(
@@ -508,7 +518,8 @@ def main(page: ft.Page):
                         )
                     )
 
-                enemy_columns.append(
+                # ENNEMI POSITION 2 ------------
+                enemmi_colonnes.append(
                     ft.Column(
                         expand=1,
                         height=400,
@@ -523,19 +534,33 @@ def main(page: ft.Page):
                                 border=ft.Border.all(2, ft.Colors.RED_600),
                                 content=ft.Text(controller.combat.placement_ennemi[1].stats_ajouter)
                             ),
+
+                            # IMAGE BANDIT
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://img.itch.zone/aW1nLzMzMzY4OTguZ2lm/original/0Ut41Y.gif")
+                            ) if type_ennemi2 in ["BANDIT", "BRIGAND", "VOLEUR"] else ft.Container(),
+
+                            # IMAGE CHASSEUR
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://i.redd.it/cm1vywqqri021.gif")
+                            ) if type_ennemi2 == "CHASSEUR" else ft.Container(),
+
                             ft.Container(
                                 expand=2,
                                 alignment=ft.Alignment.CENTER,
                                 border=ft.Border.all(2, ft.Colors.RED_600),
                                 content=ft.Text(
-                                    f"{controller.combat.placement_ennemi[1].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
+                                    f"{controller.combat.placement_ennemi[1].stats['point_vie']}/{controller.combat.placement_ennemi[1].stats['point_vie_max']}"
                                 )
                             )
                         ]
                     )
                 )
 
-                enemy_columns.append(
+                # ENNEMI POSITION 3 ------------
+                enemmi_colonnes.append(
                     ft.Column(
                         expand=1,
                         height=400,
@@ -550,19 +575,33 @@ def main(page: ft.Page):
                                 border=ft.Border.all(2, ft.Colors.RED_600),
                                 content=ft.Text(controller.combat.placement_ennemi[2].stats_ajouter)
                             ),
+
+                            # IMAGE BANDIT
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://img.itch.zone/aW1nLzMzMzY4OTguZ2lm/original/0Ut41Y.gif")
+                            ) if type_ennemi3 in ["BANDIT", "BRIGAND", "VOLEUR"] else ft.Container(),
+
+                            # IMAGE CHASSEUR
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://i.redd.it/cm1vywqqri021.gif")
+                            ) if type_ennemi3 == "CHASSEUR" else ft.Container(),
+
                             ft.Container(
                                 expand=2,
                                 alignment=ft.Alignment.CENTER,
                                 border=ft.Border.all(2, ft.Colors.RED_600),
                                 content=ft.Text(
-                                    f"{controller.combat.placement_ennemi[2].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
+                                    f"{controller.combat.placement_ennemi[2].stats['point_vie']}/{controller.combat.placement_ennemi[2].stats['point_vie_max']}"
                                 )
                             )
                         ]
                     )
                 )
 
-                enemy_columns.append(
+                # ENNEMI POSITION 4 ------------
+                enemmi_colonnes.append(
                     ft.Column(
                         expand=1,
                         height=400,
@@ -577,12 +616,25 @@ def main(page: ft.Page):
                                 border=ft.Border.all(2, ft.Colors.RED_600),
                                 content=ft.Text(controller.combat.placement_ennemi[3].stats_ajouter)
                             ),
+
+                            # IMAGE BANDIT
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://img.itch.zone/aW1nLzMzMzY4OTguZ2lm/original/0Ut41Y.gif")
+                            ) if type_ennemi4 in ["BANDIT", "BRIGAND", "VOLEUR"] else ft.Container(),
+
+                            # IMAGE CHASSEUR
+                            ft.Container(
+                                content=ft.Image(expand=True,
+                                                 src="https://i.redd.it/cm1vywqqri021.gif")
+                            ) if type_ennemi4 == "CHASSEUR" else ft.Container(),
+
                             ft.Container(
                                 expand=2,
                                 alignment=ft.Alignment.CENTER,
                                 border=ft.Border.all(2, ft.Colors.RED_600),
                                 content=ft.Text(
-                                    f"{controller.combat.placement_ennemi[3].stats['point_vie']}/{controller.combat.placement_ennemi[0].stats['point_vie_max']}"
+                                    f"{controller.combat.placement_ennemi[3].stats['point_vie']}/{controller.combat.placement_ennemi[3].stats['point_vie_max']}"
 
                                 )
                             )
@@ -590,7 +642,7 @@ def main(page: ft.Page):
                     )
                 )
 
-
+                # VIEW ------------------------------------------
                 return ft.View(
                     route="/jouer",
                     controls=[
@@ -628,7 +680,7 @@ def main(page: ft.Page):
                                                             ft.Container(
                                                                 expand=4,
                                                                 border=ft.Border.all(2, ft.Colors.RED),
-                                                                content=ft.Row(controls=enemy_columns)
+                                                                content=ft.Row(controls=enemmi_colonnes)
                                                             ),
                                                             ft.Container(expand=1),
                                                         ]
