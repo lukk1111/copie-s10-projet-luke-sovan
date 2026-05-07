@@ -6,7 +6,7 @@
     "degat_melee": 4, "degat_distance": 0, "point_vie_max": 12,
     "point_agilite": 4, "point_chance": 2},
   "CHASSEUR": {
-    "degat_melee": 0, "degat_distance": 4, "point_vie_max": 12,
+    "degat_melee": 2, "degat_distance": 4, "point_vie_max": 12,
     "point_agilite": 4, "point_chance": 2},
   "BRIGAND": {
     "degat_melee": 4, "degat_distance": 2, "point_vie_max": 16,
