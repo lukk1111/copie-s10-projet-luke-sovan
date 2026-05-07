@@ -27,7 +27,7 @@ class CombatController:
         self.action = None # Action choisie par le joueur.
         self.cible = None # Cible de l'action
 
-    def init_combat(self):
+    def init_combat(self): # Initialisation du combat
         if not (0 < len(self.dict_heros) <= 4): # Minimum 1 héro. Maximum 4 héros.
             raise ValueError("Pas assez de héros")
 
@@ -47,10 +47,10 @@ class CombatController:
     def prochain_personnage(self):
         self.index += 1
 
-        if self.index >= len(self.ordre):
-            self.enemmi_phase()
-            self.tour += 1
-            self.next_turn()
+        if self.index >= len(self.ordre): # Vérifier la fin du tour
+            self.enemmi_phase() # Si les tous les héros ont joué, les ennemis attaquent
+            self.tour += 1 # Le tour augmente
+            self.next_turn() # Un nouveau tour commence
 
     def enemmi_phase(self):
         import random

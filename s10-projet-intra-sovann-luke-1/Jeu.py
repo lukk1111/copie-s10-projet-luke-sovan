@@ -403,10 +403,6 @@ def main(page: ft.Page):
                 controller.available_actions = ""
                 refresh()
 
-            hero_columns = []
-
-            for hero in controller.combat.placement_hero:
-                actif = controller.personnage_actuel() == hero
 
 
             # -------------------- BOUCLE DE COMBAT --------------------
