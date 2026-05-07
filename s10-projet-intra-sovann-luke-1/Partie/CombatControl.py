@@ -45,7 +45,6 @@ class CombatController:
             p for p in ordre_complet
             if isinstance(p, Hero) and p.stats["point_vie"] > 0
         ]
-
         self.index = 0
 
     def personnage_actuel(self):
@@ -57,9 +56,9 @@ class CombatController:
         return self.ordre[self.index]
 
     def prochain_personnage(self):
-        self.index += 1
+        self.index += 1 # avancer d'un index.
 
-        if self.index >= len(self.ordre): # Vérifier la fin du tour
+        if self.index >= len(self.ordre): # Vérifier si on arrive à la fin de la liste
             self.enemmi_phase() # Si les tous les héros ont joué, les ennemis attaquent
             self.tour += 1 # Le tour augmente
             self.next_turn() # Un nouveau tour commence
