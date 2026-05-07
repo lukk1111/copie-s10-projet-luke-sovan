@@ -19,10 +19,10 @@ class CombatController:
         self.dict_scene = dicts["scene"]
         self.dict_type_hero = dicts["type_hero"]
 
-        self.combat = None
-        self.tour = 1
-        self.ordre = []
-        self.index = 0
+        self.combat = None # Contiendra l’objet Combat une fois le combat créé
+        self.tour = 1 # Numéro du tour actuel
+        self.ordre = [] # Liste de personnages qui vont jouer dans l'ordre du tour
+        self.index = 0 # Position
 
         self.action = None
         self.cible = None
