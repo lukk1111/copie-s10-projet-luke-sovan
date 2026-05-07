@@ -375,8 +375,6 @@ def main(page: ft.Page):
             controller.init_combat() # Démarrer le combat
 
 
-            tour_actuel = 1
-
             def refresh():
                 page.views[-1] = build_view()
                 page.update()
@@ -402,8 +400,6 @@ def main(page: ft.Page):
                 controller.do_action(cible)
                 controller.available_actions = ""
                 refresh()
-
-
 
             # -------------------- BOUCLE DE COMBAT --------------------
             def build_view():
@@ -465,7 +461,6 @@ def main(page: ft.Page):
 
 
                                 ft.Container(
-
                                     expand=2,
                                     alignment=ft.Alignment.CENTER,
                                     border=ft.Border.all(2, ft.Colors.BLUE_600),
@@ -498,7 +493,7 @@ def main(page: ft.Page):
                             height=400,
                             controls=[
                                 ft.Button(
-                                    "Cibler",
+                                    "Attaque",
                                     on_click=lambda e, idx=0: on_enemy_click(0)
                                 ),
                                 ft.Container(
@@ -546,7 +541,7 @@ def main(page: ft.Page):
                         height=400,
                         controls=[
                             ft.Button(
-                                "Cibler",
+                                "Attaque",
                                 on_click=lambda e, idx=1: on_enemy_click(1)
                             ),
                             ft.Container(
@@ -593,7 +588,7 @@ def main(page: ft.Page):
                         height=400,
                         controls=[
                             ft.Button(
-                                "Cibler",
+                                "Attaque",
                                 on_click=lambda e, idx=2: on_enemy_click(2)
                             ),
                             ft.Container(
@@ -640,7 +635,7 @@ def main(page: ft.Page):
                         height=400,
                         controls=[
                             ft.Button(
-                                "Cibler",
+                                "Attaque",
                                 on_click=lambda e, idx=3: on_enemy_click(3)
                             ),
                             ft.Container(
@@ -707,7 +702,7 @@ def main(page: ft.Page):
                                                 ###
                                                 controls=[
 
-                                                    # HERO + ENEMY ROW
+                                                    # HERO + ENNEMI RANGÉE
                                                     ft.Row(
                                                         controls=[
                                                             ft.Container(expand=1),
@@ -754,7 +749,7 @@ def main(page: ft.Page):
                                                                 ft.Row(
                                                                     controls=[
                                                                         ft.Button(
-                                                                            "Attaque",
+                                                                            "Attaques",
                                                                             on_click=on_attack_click
                                                                         ),
                                                                         ft.Button("Passer"),
